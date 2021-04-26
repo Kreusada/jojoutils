@@ -36,6 +36,24 @@ class Menu(menus.MenuPages, inherit_buttons=False):
     If you would like to change the buttons subclass this!
     """
 
+    async def send_initial_message(self, ctx: commands.Context, channel: discord.TextChannel):
+        self.current_page = self.page_start
+        page = await self._source.get_page(self.page_start)
+        kwargs = await self._get_kwargs_from_page(page)
+        return await channel.send(**kwargs)
+
+    async def show_checked_page(self, page_number: int):
+        max_pages = self._source.get_max_pages()
+        try:
+            if max_pages is None or max_pages > page_number >= 0:
+                await self.show_page(page_number)
+            elif page_number >= max_pages:
+                await self.show_page(0)
+            else:
+                await self.show_page(max_pages - 1)
+        except IndexError:
+            pass
+
     def _skip_double_triangle_buttons(self):
         max_pages = self._source.get_max_pages()
         if max_pages is None:

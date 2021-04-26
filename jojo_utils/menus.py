@@ -22,6 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import discord
+
+from redbot.core import commands
 from redbot.vendored.discord.ext import menus
 
 
@@ -37,8 +40,8 @@ class Menu(menus.MenuPages, inherit_buttons=False):
     """
 
     async def send_initial_message(self, ctx: commands.Context, channel: discord.TextChannel):
-        self.current_page = self.page_start
-        page = await self._source.get_page(self.page_start)
+        self.current_page = 0
+        page = await self._source.get_page(self.current_page)
         kwargs = await self._get_kwargs_from_page(page)
         return await channel.send(**kwargs)
 

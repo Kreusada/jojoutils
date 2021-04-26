@@ -1,9 +1,6 @@
 from redbot.core.commands import BadArgument
 
 
-__all__ = ["positive_int"]
-
-
 def positive_int(arg: str) -> int:
     """This is a type hint for Red to require a positive int
 

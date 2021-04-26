@@ -24,6 +24,10 @@ SOFTWARE.
 
 from redbot.vendored.discord.ext import menus
 
+import logging
+
+log = logging.getLogger("jojoutils")
+
 
 __all__ = ["Menu"]
 _skip_single_arrows = None
@@ -72,6 +76,7 @@ class Menu(menus.MenuPages, inherit_buttons=False):
         skip_if=_skip_single_arrows,
     )
     async def go_to_next_page(self, payload):
+        log.info(self.current_page)
         await self.show_checked_page(self.current_page + 1)
 
     @menus.button(

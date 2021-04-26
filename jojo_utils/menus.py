@@ -30,9 +30,21 @@ __all__ = ["Menu"]
 
 class Menu(menus.MenuPages, inherit_buttons=False):
     """A menus class for discord
-    
+
     If you would like to change the buttons subclass this!
     """
+
+    def _skip_double_triangle_buttons(self):
+        max_pages = self._source.get_max_pages()
+        if max_pages is None:
+            return True
+        return max_pages <= 4
+
+    def _skip_single_arrows(self):
+        max_pages = self._source.get_max_pages()
+        if max_pages is None:
+            return True
+        return max_pages == 1
 
     @menus.button(
         "\N{BLACK RIGHTWARDS ARROW}",
@@ -70,15 +82,3 @@ class Menu(menus.MenuPages, inherit_buttons=False):
     async def stop_pages(self, payload):
         self.stop()
         await self.message.delete()
-
-    def _skip_double_triangle_buttons(self):
-        max_pages = self._source.get_max_pages()
-        if max_pages is None:
-            return True
-        return max_pages <= 4
-
-    def _skip_single_arrows(self):
-        max_pages = self._source.get_max_pages()
-        if max_pages is None:
-            return True
-        return max_pages == 1

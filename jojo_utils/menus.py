@@ -51,7 +51,7 @@ class Menu(menus.MenuPages, inherit_buttons=False):
         await self.show_checked_page(self.current_page - 1)
 
     @menus.button(
-        "\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE",
+        "\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}",
         position=menus.Last(1),
         skip_if=_skip_double_triangle_buttons,
     )
@@ -59,7 +59,7 @@ class Menu(menus.MenuPages, inherit_buttons=False):
         await self.show_checked_page(self._source.get_max_pages - 1)
 
     @menus.button(
-        "\N{BLACK LEFT-POINTING DOUBLE TRIANGLE",
+        "\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}",
         position=menus.First(0),
         skip_if=_skip_double_triangle_buttons,
     )

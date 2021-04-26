@@ -5,7 +5,7 @@ with open("README.md", "r") as fp:
 
 setuptools.setup(
     name="jojoutils",
-    version="1.0.0",
+    version="1.0.2Dev",
     author="Jojo",
     description="Tools for Jojo's cogs",
     long_description=long_description,

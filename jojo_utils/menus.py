@@ -26,6 +26,8 @@ from redbot.vendored.discord.ext import menus
 
 
 __all__ = ["Menu"]
+_skip_single_arrows = None
+_skip_double_triangle_buttons = None
 
 
 class Menu(menus.MenuPages, inherit_buttons=False):
